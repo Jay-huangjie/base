@@ -46,7 +46,6 @@ public class KeyboardLayout extends FrameLayout implements KeyboardView.OnKeyboa
     private ColorStateList mSelectedTextColor = ColorStateList.valueOf(Color.BLUE);
     private ColorStateList mUnSelectedTextColor = ColorStateList.valueOf(Color.BLACK);
 
-    private boolean isNumberRandom = true;
     private boolean isUpper = false;
 
     private WeakReference<EditText> mTargetEditText;
@@ -75,8 +74,9 @@ public class KeyboardLayout extends FrameLayout implements KeyboardView.OnKeyboa
         Drawable keyboardBackground = a.getDrawable(R.styleable.KeyboardLayout_keyboardBackground);
         boolean isKeyPreview = a.getBoolean(R.styleable.KeyboardLayout_keyPreview, false);
         boolean isSymbol = a.getBoolean(R.styleable.KeyboardLayout_isSymbol, false);
+        boolean isNumberRandom = a.getBoolean(R.styleable.KeyboardLayout_isNumberRandom, false);
         attribute = new KeyboardAttribute(chooserSelectedColor, chooserUnselectedColor,
-                chooserBackground, keyboardBackground, isKeyPreview, isSymbol);
+                chooserBackground, keyboardBackground, isKeyPreview, isSymbol,isNumberRandom);
         a.recycle();
         mOrderToKeyboard = new SparseArray<>();
         mNumberPool = new ArrayList<>();
@@ -135,7 +135,7 @@ public class KeyboardLayout extends FrameLayout implements KeyboardView.OnKeyboa
             mSymbolKeyboard = new Keyboard(getContext(), R.xml.gs_keyboard_symbols_shift_land);
             mNumberKeyboard = new Keyboard(getContext(), R.xml.gs_keyboard_number_land);
         }
-        if (isNumberRandom) {
+        if (attribute.isNumberRandom) {
             randomNumbers();
         }
         mOrderToKeyboard.put(ORDER_NUMBER, mNumberKeyboard);
@@ -163,7 +163,7 @@ public class KeyboardLayout extends FrameLayout implements KeyboardView.OnKeyboa
     }
 
     private void onCurrentKeyboardChange() {
-        if (mCurrentOrder == ORDER_NUMBER && isNumberRandom) {
+        if (mCurrentOrder == ORDER_NUMBER && attribute.isNumberRandom) {
             randomNumbers();
         }
         mBinding.keyboardView.setKeyboard(mOrderToKeyboard.get(mCurrentOrder));

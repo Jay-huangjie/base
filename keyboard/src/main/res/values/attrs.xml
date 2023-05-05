@@ -6,6 +6,7 @@
     <attr name="keyboardBackground" format="reference|color" />
     <attr name="keyPreview" format="boolean" />
     <attr name="isSymbol" format="boolean" />
+    <attr name="isNumberRandom" format="boolean" />
     <declare-styleable name="KeyboardLayout">
         <attr name="chooserSelectedColor" />
         <attr name="chooserUnselectedColor" />
@@ -13,5 +14,6 @@
         <attr name="keyboardBackground" />
         <attr name="keyPreview" />
         <attr name="isSymbol" />
+        <attr name="isNumberRandom" />
     </declare-styleable>
 </resources>
