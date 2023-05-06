@@ -97,6 +97,12 @@ public class KeyboardLayout extends FrameLayout implements KeyboardView.OnKeyboa
     private void onCreate() {
         mBinding = KeyboardLayoutBinding.inflate(LayoutInflater.from(getContext()));
         addView(mBinding.getRoot());
+        mBinding.ivClose.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideKeyboard();
+            }
+        });
     }
 
 
