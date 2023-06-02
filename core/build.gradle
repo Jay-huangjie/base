@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    api 'com.blankj:utilcodex:1.29.0'
+    api 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
+    api 'androidx.lifecycle:lifecycle-livedata:2.2.0'
+    api 'androidx.lifecycle:lifecycle-common:2.2.0'
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    api 'com.scwang.smart:refresh-layout-kernel:2.0.1'      //核心必须依赖
+    api 'com.scwang.smart:refresh-footer-classics:2.0.1'
+    api 'com.scwang.smart:refresh-header-material:2.0.1'    //谷歌刷新头
+    api 'com.squareup.okhttp3:okhttp:4.9.3'
+    api 'com.squareup.okio:okio:3.0.0'
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+    api 'me.jessyan:retrofit-url-manager:1.4.0'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+    api 'androidx.recyclerview:recyclerview:1.1.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.Jay-huangjie'
+                artifactId = 'core'  //artifactId 随便取
+                version = rootProject.ext.android.version
+            }
+        }
+    }
+}

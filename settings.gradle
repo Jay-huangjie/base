@@ -9,4 +9,4 @@ dependencyResolutionManagement {
 }
 include ':app'
 include ':keyboard'
-include ':httplib'
+include ':core'

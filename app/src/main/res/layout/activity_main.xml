@@ -12,16 +12,6 @@
         android:layout_height="match_parent"
         >
 
-        <com.jay.keyboard.SecurityEditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.jay.keyboard.KeyboardLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:id="@+id/keyBoard" />
 
     </FrameLayout>
 </layout>

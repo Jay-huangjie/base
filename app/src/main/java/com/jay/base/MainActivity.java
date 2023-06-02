@@ -2,24 +2,21 @@ package com.jay.base;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.EditText;
 
 import com.jay.base.databinding.ActivityMainBinding;
-import com.jay.keyboard.EditUtils;
-import com.jay.keyboard.KeyboardLayout;
-import com.jay.keyboard.SecurityEditText;
+import com.jay.core.mvvm.BaseActivity;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        KeyboardLayout keyboardLayout = findViewById(R.id.keyBoard);
-        SecurityEditText editText = findViewById(R.id.editText);
-        EditUtils.disableShowInput(editText);
-        editText.setKeyboard(keyboardLayout);
-        keyboardLayout.bindEditText(editText);
+    public int getRootViewId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initEvent() {
+        MainViewModel model = getViewModel(MainViewModel.class);
+        model.getTime();
     }
 }
