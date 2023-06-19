@@ -2,9 +2,16 @@ package com.jay.base;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.jay.base.bean.TestBean;
 import com.jay.base.databinding.ActivityMainBinding;
 import com.jay.core.mvvm.BaseActivity;
+
+import java.lang.reflect.Field;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
@@ -16,7 +23,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     public void initEvent() {
-        MainViewModel model = getViewModel(MainViewModel.class);
-        model.getTime();
+       ClassLoader.getSystemClassLoader().clearAssertionStatus();;
     }
+
 }

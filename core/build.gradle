@@ -30,7 +30,7 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    api 'com.blankj:utilcodex:1.29.0'
+    api 'com.blankj:utilcodex:1.31.1'
     api 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
     api 'androidx.lifecycle:lifecycle-livedata:2.2.0'
     api 'androidx.lifecycle:lifecycle-common:2.2.0'
@@ -47,7 +47,7 @@ dependencies {
     api 'com.squareup.okhttp3:logging-interceptor:4.9.3'
     api 'me.jessyan:retrofit-url-manager:1.4.0'
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
-    api 'androidx.recyclerview:recyclerview:1.1.0'
+    api 'androidx.recyclerview:recyclerview:1.2.1'
 }
 
 afterEvaluate {

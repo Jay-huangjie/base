@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+    id 'com.kezong.fat-aar'
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+    }
+
+    buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+//    repositories {
+//        flatDir name: 'libs'
+//    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    compileOnly fileTree(dir: 'libs', include: ['*.aar'])
+    embed(name: 'oaid_sdk_1.0.25', ext: 'aar')
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.Jay-huangjie'
+                artifactId = 'utils'  //artifactId 随便取
+                version = rootProject.ext.android.version
+            }
+        }
+    }
+}

@@ -13,7 +13,5 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CoreInit.initHttpConfig(new HttpManager.Build()
-                .setBaseUrl("http://ybb.zlfc.vip/"));
     }
 }
