@@ -65,7 +65,6 @@ public class OaidHelper {
     private void initOaid() {
         String oaid = getCache().getOaid();
         if (TextUtils.isEmpty(oaid)) {
-
             int code = MdidSdkHelper.InitSdk(context, true, new IIdentifierListener() {
                 @Override
                 public void OnSupport(boolean b, IdSupplier idSupplier) {
